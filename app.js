@@ -43,3 +43,27 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Set global vars
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Use Routes
+app.use('/', index);
+app.use('/auth', auth);
+app.use('/stories', stories);
+
+const port = process.env.PORT || 5020;
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`)
+});
