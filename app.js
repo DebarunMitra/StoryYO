@@ -18,3 +18,15 @@ require('./config/passport')(passport);
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const stories = require('./routes/stories');
+
+// Load Keys
+const keys = require('./config/keys');
+
+// Map global promises
+mongoose.Promise = global.Promise;
+// Mongoose Connect
+mongoose.connect(keys.mongoURI, {useNewUrlParser: true,useUnifiedTopology: true})
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
+const app = express();
