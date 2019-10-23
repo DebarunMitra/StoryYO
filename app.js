@@ -30,3 +30,16 @@ mongoose.connect(keys.mongoURI, {useNewUrlParser: true,useUnifiedTopology: true}
   .catch(err => console.log(err));
 
 const app = express();
+
+// Handlebars Middleware
+app.engine('handlebars', exphbs({
+  defaultLayout:'main'
+}));
+app.set('view engine', 'handlebars');
+
+app.use(cookieParser());
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+}));
