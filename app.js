@@ -1,15 +1,16 @@
-/*
-Author: Debarun Mitra
-*/
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
+const methodOverride=require('method-override');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
+
 // Load User Model
 require('./models/User');
+require('./models/Story');
 
 // Passport Config
 require('./config/passport')(passport);
@@ -22,6 +23,11 @@ const stories = require('./routes/stories');
 // Load Keys
 const keys = require('./config/keys');
 
+//helper handlebars
+const {
+  truncate,stripTags,formatDate,select
+}=require('./helpers/hbs')
+
 // Map global promises
 mongoose.Promise = global.Promise;
 // Mongoose Connect
@@ -31,8 +37,21 @@ mongoose.connect(keys.mongoURI, {useNewUrlParser: true,useUnifiedTopology: true}
 
 const app = express();
 
+//bodyParser
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+//method override Middleware
+app.use(methodOverride('_method'));
+
 // Handlebars Middleware
 app.engine('handlebars', exphbs({
+  helpers:{
+    truncate:truncate,
+    stripTags:stripTags,
+    formatDate:formatDate,
+    select:select
+  },
   defaultLayout:'main'
 }));
 app.set('view engine', 'handlebars');
