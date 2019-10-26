@@ -1,0 +1,23 @@
+{
+  "name": "storyyo",
+  "version": "1.0.0",
+  "description": "App to share public or write private stories",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DebarunMitra/StoryYO.git"
+  },
+  "author": "Ranjith, Debarun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DebarunMitra/StoryYO/issues"
+  },
+  "homepage": "https://github.com/DebarunMitra/StoryYO#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
+  }
+}
