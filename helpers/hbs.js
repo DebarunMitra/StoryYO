@@ -35,5 +35,14 @@ module.exports = {
   paragraphNo:function(para){
     let pc=para.split(':');
     return pc[2];
+  },
+  eachProperty: function(value,options) {
+    let context=JSON.parse(value);
+    var ret = "";
+    for(let prop in context)
+    {
+        ret = ret + options.fn({property:prop,value:context[prop]});
+    }
+    return ret;
   }
 }
