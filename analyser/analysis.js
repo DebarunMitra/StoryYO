@@ -20,7 +20,15 @@ class Article{
     this.words=new Object();
   }
   grammarAndSpellCheck(){
-	  
+	let mainText=this.storyBody.replace(/<(?:.|\n)*?>/gm, '');
+    let sen=mainText.split('.');
+    let sl=sen.length;
+    console.log(sen[3]);
+    console.log('No of sentences:'+(sl-1));
+    let grammar=Gramma.check('I have been work for 12 day.').then((value) => {
+        return value.matches[0]
+    });
+    return grammar;
   }
   
 }
