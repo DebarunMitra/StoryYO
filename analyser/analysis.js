@@ -19,6 +19,10 @@ class Article{
     this.sentenceCount=0;
     this.words=new Object();
   }
+  grammarAndSpellCheck(){
+	  
+  }
+  
 }
 
 module.exports = Article;
