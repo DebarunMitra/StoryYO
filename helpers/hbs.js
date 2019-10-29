@@ -27,5 +27,9 @@ module.exports = {
   senNo:function(sen){
     let sc=sen.split(':');
     return sc[0];
+  },
+  wordNo:function(word){
+    let wc=word.split(':');
+    return wc[1];
   }
 }
