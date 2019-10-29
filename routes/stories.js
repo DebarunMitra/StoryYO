@@ -37,6 +37,26 @@ router.get('/add', ensureAuthenticated, (req, res) => {
   res.render('stories/add');
 });
 
+
+// rank your article
+router.get('/rank/:id',(req,res)=>{
+  let sId=req.params.id;
+  Story.findOne({
+    _id:req.params.id
+  }).populate('user').then((story) => {
+    let analysis=new Article(sId,story.body,story.title,story.topic);
+    let graSpell=analysis.grammerAndSpellCheck();
+    let wordSen=analysis.wordSentences();
+    let newWord=analysis.newWord();
+    res.render('stories/rank',{
+      story:story,
+      graSpell:graSpell,
+      wordSen:wordSen,
+      words:JSON.stringify(newWord)
+    });
+  });
+});
+
 // rank your article
 router.get('/rank/:id',(req,res)=>{
   Story.findOne({
