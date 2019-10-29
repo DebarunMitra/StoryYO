@@ -55,7 +55,14 @@ app.engine('handlebars', exphbs({
     truncate:truncate,
     stripTags:stripTags,
     formatDate:formatDate,
-    select:select
+    select:select,
+    wordNo:wordNo,
+    senNo:senNo,
+    paragraphNo:paragraphNo,
+    eachProperty:eachProperty,
+    readingTime:readingTime,
+    speakingTime:speakingTime,
+    promiseHandle:promiseHandle
   },
   defaultLayout:'main'
 }));
