@@ -30,7 +30,7 @@ const keys = require('./config/keys');
 
 //helper handlebars
 const {
-  truncate,stripTags,formatDate,select
+  truncate,stripTags,formatDate,select,wordNo,senNo,paragraphNo,eachProperty,readingTime,speakingTime,promiseHandle
 }=require('./helpers/hbs')
 
 // Map global promises
