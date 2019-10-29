@@ -49,5 +49,10 @@ module.exports = {
     let words=data.split(':');
     let time=(words[1]/200)*60;
     return time.toFixed(2);
+  },
+  speakingTime:function(data){
+    let words=data.split(':');
+    let time=(words[1]/130)*60;
+    return time.toFixed(2);
   }
 }
