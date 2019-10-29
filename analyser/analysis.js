@@ -30,6 +30,9 @@ class Article{
     });
     return grammar;
   }
+  wordSentences(){
+    
+  }
   
 }
 
