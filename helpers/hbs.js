@@ -44,5 +44,10 @@ module.exports = {
         ret = ret + options.fn({property:prop,value:context[prop]});
     }
     return ret;
+  },
+  readingTime:function(data){
+    let words=data.split(':');
+    let time=(words[1]/200)*60;
+    return time.toFixed(2);
   }
 }
