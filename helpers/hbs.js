@@ -23,5 +23,9 @@ module.exports = {
   },
   select: function(selected, options){
     return options.fn(this).replace( new RegExp(' value=\"' + selected + '\"'), '$& selected="selected"').replace( new RegExp('>' + selected + '</option>'), ' selected="selected"$&');
+  },
+  senNo:function(sen){
+    let sc=sen.split(':');
+    return sc[0];
   }
 }
