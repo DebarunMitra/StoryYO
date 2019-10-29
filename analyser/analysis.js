@@ -31,7 +31,30 @@ class Article{
     return grammar;
   }
   wordSentences(){
-    
+    let count=0,senWordCount=0,paragraphNo;
+    let mainText=this.storyBody.replace(/<(?:.|\n)*?>/gm, '');
+    let sen=mainText.split('.');
+    let para=this.storyBody.split(/<(?:.)*?>/gm);
+    paragraphNo=Math.floor(para.length/2);
+    let sentencesNo=sen.length;
+    for(let i=0;i<sentencesNo;i++){
+      let wordCount=sen[i].split(' ');
+      count+=wordCount.length;
+      for(let j=0;j<wordCount.length;j++){
+         let key= wordCount[j].replace(/[`~!@#$%^&*()_|+\=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+        if(!this.words.hasOwnProperty(key)){
+          this.words[key]=1;
+        }
+        else if(this.words.hasOwnProperty(key)){
+          let keyValue=this.words[key];
+          keyValue+=1;
+          this.words[key]=keyValue;
+        }
+       }
+    }
+    this.wordCount=count-1;
+    this.sentenceCount=sentencesNo-1;
+    return ((sentencesNo-1)+':'+(count-1)+':'+paragraphNo);
   }
   
 }
