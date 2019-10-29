@@ -56,7 +56,9 @@ class Article{
     this.sentenceCount=sentencesNo-1;
     return ((sentencesNo-1)+':'+(count-1)+':'+paragraphNo);
   }
-  
+  newWord(){
+    return this.words;
+  }
 }
 
 module.exports = Article;
