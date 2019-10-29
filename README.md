@@ -9,14 +9,14 @@ StoryYo
  - HTML
  - CSS
  - JavaScript
- -NodeJS
- -ExpressJS
- -MongoDB
+ - NodeJS
+ - ExpressJS
+ - MongoDB
 ## Objective: 
 An application where people can share there stories, experiences and thoughts.
 ## Screenshot:
-![shot1](images/img1.PNG)
+![shot1](images/welcome.PNG)
 #### +++++++++++++++++++++++++++++++++++++++++++++
-![shot2](images/img2.PNG)
+![shot2](images/dashboard.PNG)
 #### +++++++++++++++++++++++++++++++++++++++++++++
-![shot3](images/img3.PNG)
+![shot3](images/article details.PNG)
