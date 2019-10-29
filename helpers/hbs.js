@@ -54,5 +54,14 @@ module.exports = {
     let words=data.split(':');
     let time=(words[1]/130)*60;
     return time.toFixed(2);
+  },
+  promiseHandle:function(promise){
+    var promiseValue;
+    promise.then((value) => {
+      promiseValue=value;
+      console.log(value);
+    });
+    console.log(promiseValue);
+    return promiseValue;
   }
 }
