@@ -1,3 +1,8 @@
+/*
+Author: Debarun Mitra
+Technlogy: MongoDB, ExpressJS, NodeJS
+Objective: Create an application where people can share their stories, ideas, thoughts and experiences.
+*/
 const Grammarbot = require('grammarbot');
 
 class Article{
