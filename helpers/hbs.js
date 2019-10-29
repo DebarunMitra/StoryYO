@@ -31,5 +31,9 @@ module.exports = {
   wordNo:function(word){
     let wc=word.split(':');
     return wc[1];
+  },
+  paragraphNo:function(para){
+    let pc=para.split(':');
+    return pc[2];
   }
 }
