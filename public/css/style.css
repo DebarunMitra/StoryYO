@@ -16,19 +16,39 @@ main {
 .nav-wrapper .fa-bars{
   font-size:25px;
 }
-
 footer{
   margin-top:20px;
 }
-
 .story-text{
   height:120px;
 }
-
 .dash-status{
   text-transform: capitalize;
 }
-
 #delete-form{
   display:inline;
+}
+.KeyWords-list{
+  max-height: 310px;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.list-content{
+  font-size: 15px;
+  padding:20px;
+  font-weight: 100px;
+}
+.pointSection{
+  height: 300px;
+}
+.content-value{
+  font-size: 15px;
+  padding:20px;
+}
+.rank-section{
+  padding: 1px;
 }
