@@ -74,6 +74,13 @@ class Article{
   newWord(){
     return this.words;
   }
+  point(sen,word,para){
+    let time=((word/200)*60 + (word/130)*60)/2;
+    let avgWordPerSen=(Object.keys(this.words).length)/sen;
+    let paraPoint=avgWordPerSen*para;
+    let totalPoint=time+avgWordPerSen+paraPoint;
+    return totalPoint.toFixed(3);
+  }
 }
 
 module.exports = Article;
