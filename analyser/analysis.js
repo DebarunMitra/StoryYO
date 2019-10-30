@@ -67,6 +67,13 @@ class Article{
     this.grammar[this.count]={"description":description,"issueType":issueType,"word":word};
     this.count+=1;
   }
+  getMistakes(){
+    console.log(this.grammar);
+    return this.grammar;
+  }
+  newWord(){
+    return this.words;
+  }
 }
 
 module.exports = Article;
