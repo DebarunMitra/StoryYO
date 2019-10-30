@@ -20,16 +20,20 @@ class Article{
     this.sentenceCount=0;
     this.words=new Object();
   }
-  grammarAndSpellCheck(){
-	let mainText=this.storyBody.replace(/<(?:.|\n)*?>/gm, '');
-    let sen=mainText.split('.');
-    let sl=sen.length;
-    console.log(sen[3]);
-    console.log('No of sentences:'+(sl-1));
-    let grammar=Gramma.check('I have been work for 12 day.').then((value) => {
-        return value.matches[0]
-    });
-    return grammar;
+  grammerAndSpellCheck(){
+    let mainText=this.storyBody.replace(/<(?:.|\n)*?>/gm, '');
+    let sen=mainText.split('.');let result;
+    let sentencesNo=sen.length;
+    for(let i=0;i<sentencesNo-1;i++){
+    Gramma.check(sen[i]).then((value)=>{
+        if(value.matches[0]){
+          this.collectMistakes(value.matches[0].message,value.matches[0].shortMessage,value.matches[0].word);
+        }
+       });
+       if(i===(sentencesNo-2)){
+          //return this.getError();
+       }
+     }
   }
   wordSentences(){
     let count=0,senWordCount=0,paragraphNo;
