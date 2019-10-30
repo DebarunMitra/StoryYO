@@ -62,8 +62,10 @@ class Article{
     let point=this.point(this.sentenceCount,this.wordCount,paragraphNo);
     return ((sentencesNo-1)+':'+(count-1)+':'+paragraphNo+':'+point);
   }
-  newWord(){
-    return this.words;
+  collectMistakes(description,issueType,word){
+    console.log(description+','+issueType+','+word);
+    this.grammar[this.count]={"description":description,"issueType":issueType,"word":word};
+    this.count+=1;
   }
 }
 
