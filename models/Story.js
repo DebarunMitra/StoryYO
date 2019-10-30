@@ -1,8 +1,3 @@
-/*
-Author: Debarun Mitra
-Technlogy: MongoDB, ExpressJS, NodeJS
-Objective: Create an application where people can share their stories, ideas, thoughts and experiences.
-*/
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -23,6 +18,10 @@ const StorySchema = new Schema({
   status: {
     type: String,
     default:'public'
+  },
+  point:{
+    type: Number,
+    default:0
   },
   allowComments: {
     type: Boolean,
