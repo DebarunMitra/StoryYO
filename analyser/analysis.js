@@ -59,7 +59,8 @@ class Article{
     }
     this.wordCount=count-1;
     this.sentenceCount=sentencesNo-1;
-    return ((sentencesNo-1)+':'+(count-1)+':'+paragraphNo);
+    let point=this.point(this.sentenceCount,this.wordCount,paragraphNo);
+    return ((sentencesNo-1)+':'+(count-1)+':'+paragraphNo+':'+point);
   }
   newWord(){
     return this.words;
