@@ -23,6 +23,22 @@
     </div>
 
     <div class="row">
+      <div class="input-field">
+        <select name="topic">
+        {{#select story.topic}}
+          <option value="life" selected>Life</option>
+          <option value="society">Society</option>
+          <option value="echonomy">Echonomy</option>
+          <option value="technology">Technology</option>
+          <option value="story">Story</option>
+          <option value="other">Other</option>
+        {{/select}}
+        </select>
+        <label for="topic">Topic:</label>
+      </div>
+    </div>
+
+    <div class="row">
       <p>
         <input type="checkbox" name="allowComments" class="filled-in" id="filled-in-box" {{#if story.allowComments}} checked="checked" {{/if}}>
         <label for="filled-in-box">Allow Comments</label>
