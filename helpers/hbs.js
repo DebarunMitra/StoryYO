@@ -1,8 +1,3 @@
-/*
-Author: Debarun Mitra
-Technlogy: MongoDB, ExpressJS, NodeJS
-Objective: Create an application where people can share their stories, ideas, thoughts and experiences.
-*/
 const moment=require('moment');
 module.exports = {
   truncate: function(str, len){
@@ -62,12 +57,12 @@ module.exports = {
     return point[3];
   },
   promiseHandle:function(promise){
-    var promiseValue;
-    promise.then((value) => {
-      promiseValue=value;
-      console.log(value);
-    });
-    console.log(promiseValue);
-    return promiseValue;
+    // var promiseValue;
+    // promise.then((value) => {
+    //   promiseValue=value;
+    //   console.log(value);
+    // });
+    // console.log(promiseValue);
+    // return promiseValue;
   }
 }
