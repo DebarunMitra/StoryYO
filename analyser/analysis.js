@@ -16,8 +16,6 @@ class Article {
     this.words = new Object();
   }
   grammerAndSpellCheck() {
-    //console.log(story);
-    //return story.replace(/<(?:.|\n)*?>/gm, '');
     let mainText = this.storyBody.replace(/<(?:.|\n)*?>/gm, '');
     let sen = mainText.split('.');
     var promisValue;
@@ -95,18 +93,21 @@ class Article {
         return; // The function execution ends here
       }
 
-      resolve(data);
+      return Promise.resolve(data);
     });
   }
   newWord() {
     return this.words;
   }
   point(sen, word, para) {
-    let time = ((word / 200) * 60 + (word / 130) * 60) / 2;
-    let avgWordPerSen = (Object.keys(this.words).length) / sen;
-    let paraPoint = avgWordPerSen * para;
-    let totalPoint = time + avgWordPerSen + paraPoint;
-    //console.log((time+avgWordPerSen+paraPoint));
+    /*
+    General reading time of a person: 200 word
+    General speaking time of a person: 130 word
+    */
+    let time = ((word / 200) * 60 + (word / 130) * 60) / 2;//average of reading time in seconds
+    let avgWordPerSen = (Object.keys(this.words).length) / sen;//calculate average new word per sentences
+    let paraPoint = avgWordPerSen * para;//multiplied with no of paragraph
+    let totalPoint = time + avgWordPerSen + paraPoint;//add all points
     return totalPoint.toFixed(3);
   }
 }
