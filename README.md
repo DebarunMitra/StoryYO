@@ -26,3 +26,5 @@ An application where people can share there stories, experiences and thoughts.
 ![shot5](images/articleDetails.PNG)
 #### +++++++++++++++++++++++++++++++++++++++++++++
 ![shot6](images/writeStory.PNG)
+#### +++++++++++++++++++++++++++++++++++++++++++++
+![shot4](images/writeStory.PNG)
