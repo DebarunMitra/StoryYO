@@ -19,6 +19,8 @@
       </div>
     </div>
   </div>
+  <div class="promise">
+  </div>
   <div class="rank-section">
     <div class="col s12 m4">
       <div class="card center-align">
@@ -26,39 +28,39 @@
           <span class="card-title">Article Details:</span>
           <hr style="height:5px; background-color:gray; border:none;">
           <table>
-          <tbody>
-            <tr>
-              <td>Sentences</td>
-              <td></td>
-              <td>{{senNo wordSen}}</td>
-            </tr>
-            <tr>
-              <td>Words</td>
-              <td></td>
-              <td>{{wordNo wordSen}}</td>
-            </tr>
-            <tr>
-              <td>Paragraphs</td>
-              <td></td>
-              <td>{{paragraphNo wordSen}}</td>
-            </tr>
-            <tr>
-              <td>Content Type</td>
-              <td></td>
-              <td>{{story.topic}}</td>
-            </tr>
-            <tr>
-              <td>Reading Time</td>
-              <td></td>
-              <td>{{readingTime wordSen}} sec</td>
-            </tr>
-            <tr>
-              <td>Speaking Time</td>
-              <td></td>
-              <td>{{speakingTime wordSen}} sec</td>
-            </tr>
-          </tbody>
-        </table>
+            <tbody>
+              <tr>
+                <td>Sentences</td>
+                <td></td>
+                <td>{{senNo wordSen}}</td>
+              </tr>
+              <tr>
+                <td>Words</td>
+                <td></td>
+                <td>{{wordNo wordSen}}</td>
+              </tr>
+              <tr>
+                <td>Paragraphs</td>
+                <td></td>
+                <td>{{paragraphNo wordSen}}</td>
+              </tr>
+              <tr>
+                <td>Content Type</td>
+                <td></td>
+                <td>{{story.topic}}</td>
+              </tr>
+              <tr>
+                <td>Reading Time</td>
+                <td></td>
+                <td>{{readingTime wordSen}} sec</td>
+              </tr>
+              <tr>
+                <td>Speaking Time</td>
+                <td></td>
+                <td>{{speakingTime wordSen}} sec</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -69,16 +71,16 @@
           <hr style="height:5px; background-color:gray; border:none;">
           <div class="KeyWords-list">
             <table class="responsive-table">
-            <tbody>
-              {{#eachProperty words}}
-              <tr>
-                <td>{{property}}</td>
-                <td></td>
-                <td>{{value}}</td>
-              </tr>
-              {{/eachProperty}}
-            </tbody>
-          </table>
+              <tbody>
+                {{#eachProperty words}}
+                  <tr>
+                    <td>{{property}}</td>
+                    <td></td>
+                    <td>{{value}}</td>
+                  </tr>
+                {{/eachProperty}}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -89,19 +91,26 @@
           <span class="card-title">Grammar & Spelling:</span>
           <hr style="height:5px; background-color:gray; border:none;">
           <table>
-          <tbody>
-            <tr>
-              <td>Grammar</td>
-              <td></td>
-              <td>NA</td>
-            </tr>
-            <tr>
-              <td>Spelling</td>
-              <td></td>
-              <td>NA</td>
-            </tr>
-          </tbody>
-        </table>
+            <tbody>
+              <tr>
+                <td>Grammar</td>
+                <td></td>
+                <td>
+                  <p id="grammar">NA<p>
+                </td>
+              </tr>
+              <tr>
+                <td>Spelling</td>
+                <td></td>
+                <td>
+                  <p id="spell">NA<p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div id="graSpellCheck" style="display:block;">
+            <input type="button" class="btn blue" value="Check Mistakes">
+          </div>
         </div>
       </div>
     </div>
@@ -114,10 +123,19 @@
           <hr style="height:5px; background-color:gray; border:none;">
           <h5>Point: {{articlePoint wordSen}}</h5>
           <form action="/stories/point/{{story.id}}/{{articlePoint wordSen}}?_method=PUT" method="post" class="col s12">
-          <input type="submit" value="Save Your Point" class="waves-effect waves-light btn">
-        </form>
+            <input type="submit" value="Save Your Point" class="waves-effect waves-light btn">
+          </form>
         </div>
       </div>
     </div>
   </div>
+  <div id="issueCard" class="col s12 m12" style="display:none;">
+    <h5>Check Mistakes</h5>
+    <div class="card story">
+      <div id="issue" class="card-content">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 </div>

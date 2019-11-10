@@ -1,7 +1,17 @@
-<h1>Welcome</h1>
-<p>Welcome to StoryYO 1.0.0</p>
-<p>Post stories from the best and worst of your life and choose for them to be read by the world or completley private as your own personal diary</p>
-{{#if user}}
-{{else}}
-  <a class="btn red darken-1" href="/auth/google"><i class="fa fa-google left"></i> Login With Google</a>
-{{/if}}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col s12 m6 l6">
+      <h1>Welcome</h1>
+      <p>Welcome to StoryYO 1.0.0</p>
+      <p>Post stories from the best and worst of your life</p>
+      <p>Choose for them to be read by the world or completley private as your own personal diary</p>
+      {{#if user}}
+      {{else}}
+        <a id="login" class="btn red darken-1" href="/auth/google"><i class="fa fa-google left"></i> Login With Google</a>
+      {{/if}}
+    </div>
+    <div class="col s12 m6 l6">
+      <img class="themeImage" src="{{bgimage}}" alt="image" />
+    </div>
+  </div>
+</div>

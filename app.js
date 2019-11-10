@@ -1,13 +1,8 @@
-/*
-Author: Debarun Mitra
-Technlogy: MongoDB, ExpressJS, NodeJS
-Objective: Create an application where people can share their stories, ideas, thoughts and experiences.
-*/
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
-const methodOverride=require('method-override');
+const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -26,24 +21,42 @@ const auth = require('./routes/auth');
 const stories = require('./routes/stories');
 
 // Load Keys
-const keys = require('./config/keys');
+const keys = require('./config/keys_dev');
 
 //helper handlebars
 const {
-  truncate,stripTags,formatDate,select,wordNo,senNo,paragraphNo,eachProperty,readingTime,speakingTime,articlePoint,promiseHandle
-}=require('./helpers/hbs')
+  truncate,
+  stripTags,
+  formatDate,
+  select,
+  wordNo,
+  senNo,
+  paragraphNo,
+  eachProperty,
+  readingTime,
+  speakingTime,
+  articlePoint,
+  bgimage,
+  rank,
+  editIcon
+} = require('./helpers/hbs')
 
 // Map global promises
 mongoose.Promise = global.Promise;
 // Mongoose Connect
-mongoose.connect(keys.mongoURI, {useNewUrlParser: true,useUnifiedTopology: true})
+mongoose.connect(keys.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
 const app = express();
 
 //bodyParser
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
 
 //method override Middleware
@@ -51,21 +64,23 @@ app.use(methodOverride('_method'));
 
 // Handlebars Middleware
 app.engine('handlebars', exphbs({
-  helpers:{
-    truncate:truncate,
-    stripTags:stripTags,
-    formatDate:formatDate,
-    select:select,
-    wordNo:wordNo,
-    senNo:senNo,
-    paragraphNo:paragraphNo,
-    eachProperty:eachProperty,
-    readingTime:readingTime,
-    speakingTime:speakingTime,
-    articlePoint:articlePoint,
-    promiseHandle:promiseHandle
+  helpers: {
+    truncate: truncate,
+    stripTags: stripTags,
+    formatDate: formatDate,
+    select: select,
+    wordNo: wordNo,
+    senNo: senNo,
+    paragraphNo: paragraphNo,
+    eachProperty: eachProperty,
+    readingTime: readingTime,
+    speakingTime: speakingTime,
+    articlePoint: articlePoint,
+    bgimage:bgimage,
+    rank:rank,
+    editIcon:editIcon
   },
-  defaultLayout:'main'
+  defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
 
