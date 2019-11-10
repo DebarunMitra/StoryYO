@@ -8,7 +8,6 @@ class Article {
     this.storyBody = storyBody;
     this.title = title;
     this.topic = topic;
-    this.noWords = ['is', 'are', 'am', 'have', 'had', 'was', 'were', 'be', 'been', 'can', 'could', 'shall', 'should', 'will', 'would'];
     this.wordCount = 0;
     this.grammar = new Array();
     this.count = 0;
@@ -22,22 +21,16 @@ class Article {
     let sentencesNo = sen.length;
     for (let i = 0; i < sentencesNo - 1; i++) {
       promisValue = Gramma.check(sen[i]).then((value) => {
-        //     console.log(value);
-        if (value.matches[0]) {
-          if (this.collectMistakes(value.matches[0].message, value.matches[0].shortMessage, value.matches[0].word)) {
-            //  console.log(this.grammar);
-            return this.grammar;
-          }
+        if (value.matches[0] !== undefined) {
+          this.collectMistakes(value.matches[0].message, value.matches[0].shortMessage, value.matches[0].word);
         }
-      }, function(err) {
-        console.log(err);
+        console.log(this.grammar);
+          return this.grammar;
       });
+       if (i === sentencesNo - 2){
+          return promisValue;
+       }
     }
-    let result = this.resolvePromise(promisValue);
-    console.log(result);
-    //   result.then((value) => {console.log(value);});
-    // console.log(this.resolvePromise(promisValue));
-    //   return this.resolvePromise(promisValue);
   }
   wordSentences() {
     let count = 0,
@@ -81,21 +74,6 @@ class Article {
     this.count += 1;
     return true;
   }
-  getMistakes() {
-    console.log(this.grammar);
-    return this.grammar;
-  }
-  resolvePromise(data) {
-    return new Promise((resolve, reject) => {
-
-      if (!data) {
-        reject("No error!!");
-        return; // The function execution ends here
-      }
-
-      return Promise.resolve(data);
-    });
-  }
   newWord() {
     return this.words;
   }
@@ -104,10 +82,10 @@ class Article {
     General reading time of a person: 200 word
     General speaking time of a person: 130 word
     */
-    let time = ((word / 200) * 60 + (word / 130) * 60) / 2;//average of reading time in seconds
-    let avgWordPerSen = (Object.keys(this.words).length) / sen;//calculate average new word per sentences
-    let paraPoint = avgWordPerSen * para;//multiplied with no of paragraph
-    let totalPoint = time + avgWordPerSen + paraPoint;//add all points
+    let time = ((word / 200) * 60 + (word / 130) * 60) / 2; //average of reading time in seconds
+    let avgWordPerSen = (Object.keys(this.words).length) / sen; //calculate average new word per sentences
+    let paraPoint = avgWordPerSen * para; //multiplied with no of paragraph
+    let totalPoint = time + avgWordPerSen + paraPoint; //add all points
     return totalPoint.toFixed(3);
   }
 }
