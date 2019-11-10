@@ -21,10 +21,8 @@ class Article {
     let sentencesNo = sen.length;
     for (let i = 0; i < sentencesNo - 1; i++) {
       promisValue = Gramma.check(sen[i]).then((value) => {
-      //  console.log(value.matches[0]);
         if (value.matches[0] !== undefined) {
           this.collectMistakes(value.matches[0].message, value.matches[0].shortMessage, value.matches[0].word);
-            //  console.log(this.grammar);
         }
         console.log(this.grammar);
           return this.grammar;
