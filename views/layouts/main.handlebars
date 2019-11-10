@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <title>StoryYO</title>
 </head>
+
 <body>
   {{> _header}}
   {{#if user}}
@@ -21,23 +23,39 @@
   </main>
   {{> _footer}}
 
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-
   <script>
     $(document).ready(() => {
       $('.button-collapse').sideNav();
       $('select').material_select();
+      $('#graSpellCheck').click(function() {
+        $.ajax({
+          type: 'get',
+          url: 'http://localhost:5020/stories/graspell',
+          success: function(data) {
+            if (data[0] === undefined) {
+              $('#grammar').css('color', 'green').html('Ok');
+              $('#spell').css('color', 'green').html('Ok');
+            } else {
+              $('#grammar').css('color', 'red').html('Yes');
+              $('#spell').css('color', 'red').html('Yes');
+              $('#issueCard').css("display", "block");
+              data.map(value => {
+                let row = '<div><p>Issue Type:&nbsp;&nbsp;<span style="color:red;">"' + value.description + '"</span>,&nbsp;Issue:&nbsp;&nbsp;<span style="color:red;">"' + value.word + '"</span><p><div>';
+                $('#issue').append(row).last();
+              });
+            }
+          }
+        });
+      });
     });
-
-    CKEDITOR.replace('body',{
+    CKEDITOR.replace('body', {
       plugins: 'wysiwygarea,toolbar,basicstyles,link'
     });
   </script>
 </body>
+
 </html>
