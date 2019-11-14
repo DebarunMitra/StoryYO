@@ -15,7 +15,7 @@ StoryYo
 ## Objective: 
 An application where people can share there stories, experiences and thoughts.
 ## Visit:
-[StorYO](https://storyyo.herokuapp.com/)
+[StoryYO](https://storyyo.herokuapp.com/)
 ## Screenshot:
 ![shot1](images/welcome.PNG)
 #### +++++++++++++++++++++++++++++++++++++++++++++
