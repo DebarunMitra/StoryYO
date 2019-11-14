@@ -34,7 +34,7 @@
       $('#graSpellCheck').click(function() {
         $.ajax({
           type: 'get',
-          url: 'http://localhost:5020/stories/graspell',
+          url: 'https://storyyo.herokuapp.com/stories/graspell',
           success: function(data) {
             if (data[0] === undefined) {
               $('#grammar').css('color', 'green').html('Ok');

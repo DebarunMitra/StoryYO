@@ -13,7 +13,6 @@ let promise;
 
 // Stories Index
 router.get('/', (req, res) => {
-  //  res.render('stories/index');
   Story.find({
     status: 'public'
   }).populate('user').sort({date:'desc'}).then(stories => {
@@ -143,7 +142,6 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
 
 //process add Story
 router.post('/', (req, res) => {
-  //console.log(req.body);
   let allowComments;
   if (req.body.allowComments) {
     allowComments = true;
@@ -159,11 +157,9 @@ router.post('/', (req, res) => {
     allowComments: allowComments,
     user: req.user.id
   };
-  //console.log(newStory);
   //save story object into the db
   new Story(newStory).save().then((story) => {
     res.redirect(`/stories/show/${story.id}`);
-    //console.log(story.id);
   }).catch((err) => console.log('Story Error:' + err));
 });
 
