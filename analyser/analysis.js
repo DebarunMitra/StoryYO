@@ -14,6 +14,10 @@ class Article {
     this.sentenceCount = 0;
     this.words = new Object();
   }
+  /**
+   * [grammerAndSpellCheck description]
+   * @return it returns grammer and spellcheck errors
+   */
   grammerAndSpellCheck() {
     let mainText = this.storyBody.replace(/<(?:.|\n)*?>/gm, '');
     let sen = mainText.split('.');
@@ -32,6 +36,10 @@ class Article {
        }
     }
   }
+  /**
+   * [wordSentences description]
+   * @return it returns sentences number, new words number, point, paragraph number
+   */
   wordSentences() {
     let count = 0,
       senWordCount = 0,
@@ -60,6 +68,11 @@ class Article {
     let point = this.point(this.sentenceCount, this.wordCount, paragraphNo);
     return ((sentencesNo - 1) + ':' + (count - 1) + ':' + paragraphNo + ':' + point);
   }
+  /**
+   * [collectMistakes description]
+   * @param  receives value from grammerAndSpellCheck() method and collect it
+   * @return it return collected errors object
+   */
   collectMistakes(description, issueType, word) {
     this.grammar[this.count] = {
       "description": description,
@@ -69,9 +82,17 @@ class Article {
     this.count += 1;
     return true;
   }
+  /**
+   * [newWord description]
+   * @return word collected from article
+   */
   newWord() {
     return this.words;
   }
+  /**
+   * [point description]
+   *@return it return point of the article
+   */
   point(sen, word, para) {
     /*
     General reading time of a person: 200 word
