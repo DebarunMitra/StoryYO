@@ -70,7 +70,7 @@ class Article {
   }
   /**
    * [collectMistakes description]
-   * @param  receives value from grammerAndSpellCheck() method and collect it
+   * @param  receives parameters from grammerAndSpellCheck() method and collect it into this.grammar
    * @return it return collected errors object
    */
   collectMistakes(description, issueType, word) {
@@ -91,12 +91,13 @@ class Article {
   }
   /**
    * [point description]
-   *@return it return point of the article
+   * @param  receives parameters from wordSentences() method and calculate point 
+   * @return it return point of the article
    */
   point(sen, word, para) {
     /*
-    General reading time of a person: 200 word
-    General speaking time of a person: 130 word
+    General reading time of a person: 200 word/min
+    General speaking time of a person: 130 word/min
     */
     let time = ((word / 200) * 60 + (word / 130) * 60) / 2; //average of reading time in seconds
     let avgWordPerSen = (Object.keys(this.words).length) / sen; //calculate average new word per sentences
