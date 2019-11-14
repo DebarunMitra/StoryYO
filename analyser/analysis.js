@@ -55,22 +55,17 @@ class Article {
         }
       }
     }
-    //  console.log(this.words);
-    //  console.log(Object.keys(this.words).length);
     this.wordCount = count - 1;
     this.sentenceCount = sentencesNo - 1;
     let point = this.point(this.sentenceCount, this.wordCount, paragraphNo);
-    //  console.log(point);
     return ((sentencesNo - 1) + ':' + (count - 1) + ':' + paragraphNo + ':' + point);
   }
   collectMistakes(description, issueType, word) {
-    //console.log(description+','+issueType+','+word);
     this.grammar[this.count] = {
       "description": description,
       "issueType": issueType,
       "word": word
     };
-    //    console.log(this.grammar[this.count]);
     this.count += 1;
     return true;
   }
