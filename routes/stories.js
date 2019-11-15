@@ -148,7 +148,14 @@ router.get('/graspell',(req,res)=>{
 });
 
 
-//save article points
+/**
+* [save article points]
+* @path '/point/:id/:point'
+* @params story id
+* @params story point
+* @method  PUT
+* @res '/dashboard'
+*/
 router.put('/point/:id/:point', (req, res) => {
   Story.findOne({
     _id: req.params.id
@@ -162,7 +169,13 @@ router.put('/point/:id/:point', (req, res) => {
 });
 
 
-//edit stories
+/**
+* [edit stories]
+* @path '/edit/:id'
+* @params story id
+* @method  GET
+* @res 'stories/edit'
+*/
 router.get('/edit/:id', ensureAuthenticated, (req, res) => {
   Story.findOne({
     _id: req.params.id
@@ -178,7 +191,12 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
 });
 
 
-//process add Story
+/**
+* [process add Story]
+* @path '/', post default path to save story
+* @method  POST
+* @res ''/stories/show/storyId'
+*/
 router.post('/', (req, res) => {
   let allowComments;
   if (req.body.allowComments) {
@@ -201,7 +219,13 @@ router.post('/', (req, res) => {
   }).catch((err) => console.log('Story Error:' + err));
 });
 
-//edit form process
+/**
+* [edit form process]
+* @path '/:id'
+* @params story id
+* @method  PUT
+* @res '/dashboard'
+*/
 router.put('/:id', (req, res) => {
   Story.findOne({
     _id: req.params.id
@@ -224,7 +248,13 @@ router.put('/:id', (req, res) => {
   });
 });
 
-//delete story from db
+/**
+* [delete story from db]
+* @path '/:id'
+* @params story id
+* @method  DELETE
+* @res '/dashboard'
+*/
 router.delete('/:id', (req, res) => {
   Story.remove({
     _id: req.params.id
@@ -233,7 +263,13 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-// Add Comment
+/**
+* [Add Comment]
+* @path '/comment/:id'
+* @params story id
+* @method  POST
+* @res '/stories/show/storyId'
+*/
 router.post('/comment/:id', (req, res) => {
   Story.findOne({
     _id: req.params.id
