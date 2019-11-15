@@ -14,6 +14,10 @@ class Article {
     this.sentenceCount = 0;
     this.words = new Object();
   }
+  /**
+   * [grammerAndSpellCheck description]
+   * @return it returns grammer and spellcheck errors
+   */
   grammerAndSpellCheck() {
     let mainText = this.storyBody.replace(/<(?:.|\n)*?>/gm, '');
     let sen = mainText.split('.');
@@ -32,6 +36,10 @@ class Article {
        }
     }
   }
+  /**
+   * [wordSentences description]
+   * @return it returns sentences number, new words number, point, paragraph number
+   */
   wordSentences() {
     let count = 0,
       senWordCount = 0,
@@ -55,32 +63,41 @@ class Article {
         }
       }
     }
-    //  console.log(this.words);
-    //  console.log(Object.keys(this.words).length);
     this.wordCount = count - 1;
     this.sentenceCount = sentencesNo - 1;
     let point = this.point(this.sentenceCount, this.wordCount, paragraphNo);
-    //  console.log(point);
     return ((sentencesNo - 1) + ':' + (count - 1) + ':' + paragraphNo + ':' + point);
   }
+  /**
+   * [collectMistakes description]
+   * @param  receives parameters from grammerAndSpellCheck() method and collect it into this.grammar
+   * @return it return collected errors object
+   */
   collectMistakes(description, issueType, word) {
-    //console.log(description+','+issueType+','+word);
     this.grammar[this.count] = {
       "description": description,
       "issueType": issueType,
       "word": word
     };
-    //    console.log(this.grammar[this.count]);
     this.count += 1;
     return true;
   }
+  /**
+   * [newWord description]
+   * @return word collected from article
+   */
   newWord() {
     return this.words;
   }
+  /**
+   * [point description]
+   * @param  receives parameters from wordSentences() method and calculate point 
+   * @return it return point of the article
+   */
   point(sen, word, para) {
     /*
-    General reading time of a person: 200 word
-    General speaking time of a person: 130 word
+    General reading time of a person: 200 word/min
+    General speaking time of a person: 130 word/min
     */
     let time = ((word / 200) * 60 + (word / 130) * 60) / 2; //average of reading time in seconds
     let avgWordPerSen = (Object.keys(this.words).length) / sen; //calculate average new word per sentences

@@ -1,6 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
-const keys = require('./keys_dev');
+const keys = require('./keys_prod');
 // Load user model
 const User = mongoose.model('users');
 
@@ -37,10 +37,12 @@ module.exports = function(passport){
     })
   );
 
+//save the user id to session
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
+//find the user from db using user id from session and attach as user object with response
   passport.deserializeUser((id, done) => {
     User.findById(id).then(user => done(null, user));
   });

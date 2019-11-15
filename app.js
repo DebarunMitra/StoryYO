@@ -21,7 +21,7 @@ const auth = require('./routes/auth');
 const stories = require('./routes/stories');
 
 // Load Keys
-const keys = require('./config/keys_dev');
+const keys = require('./config/keys_prod');
 
 //helper handlebars
 const {
