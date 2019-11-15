@@ -96,12 +96,23 @@ router.get('/my', ensureAuthenticated, (req, res) => {
 });
 
 
-// Add Story Form
+/**
+* [Add Story Form]
+* @path '/add', add story
+* @method  GET
+* @res stories/add
+*/
 router.get('/add', ensureAuthenticated, (req, res) => {
   res.render('stories/add');
 });
 
-// point your article
+/**
+* [rank of selected article]
+* @path '/rank/:id'
+* @params story id
+* @method  GET
+* @res 'stories/rank'
+*/
 router.get('/rank/:id', (req, res) => {
   let sId = req.params.id;
   Story.findOne({
@@ -110,10 +121,8 @@ router.get('/rank/:id', (req, res) => {
     let analysis = new Article(sId, story.body, story.title, story.topic);
     let wordSen = analysis.wordSentences();
     let newWord = analysis.newWord();
-    //let getErr=analysis.getMistakes();
     let graSpell = analysis.grammerAndSpellCheck();
     promise=graSpell;
-   //console.log(promise);
     res.render('stories/rank', {
       story: story,
       graSpell:graSpell,
@@ -123,6 +132,12 @@ router.get('/rank/:id', (req, res) => {
   });
 });
 
+/**
+* [show grammar and spelling mistakes of selected article]
+* @path '/graspell'
+* @method  GET
+* @res grammar and spelling mistakes
+*/
 router.get('/graspell',(req,res)=>{
   let dataArr=[];
   console.log(promise);
