@@ -37,10 +37,12 @@ module.exports = function(passport){
     })
   );
 
+//save the user id to session
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
+//find the user from db using user id from session and attach as user object with response
   passport.deserializeUser((id, done) => {
     User.findById(id).then(user => done(null, user));
   });

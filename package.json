@@ -29,7 +29,8 @@
     "passport-google-oauth20": "^2.0.0",
     "promised-handlebars": "^2.0.1",
     "q": "^1.5.1",
-    "rebuild": "^0.1.2"
+    "rebuild": "^0.1.2",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {}
 }
