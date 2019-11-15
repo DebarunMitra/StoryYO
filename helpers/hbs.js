@@ -53,7 +53,7 @@ module.exports = {
     return sc[0];
   },
   /**
-   * [description]
+   * [wordNo]
    * @param  {[type]} word [takes an data sring with sentence no, word no, paragraph no]
    * @return {[type]}      [number of words]
    */
@@ -71,10 +71,10 @@ module.exports = {
     return pc[2];
   },
   /**
-   * [description]
-   * @param  {[type]} value   [description]
-   * @param  {[type]} options [description]
-   * @return {[type]}         [description]
+   * [eachProperty]
+   * @param  {[string]} value   [value of article set as string]
+   * @param  {[object]} options [get the article option value]
+   * @return {[object]}         [property and value of article context]
    */
   eachProperty: function(value, options) {
     let context = JSON.parse(value);
@@ -137,8 +137,9 @@ module.exports = {
       totalPoint += value.point;
       res++;
     });
-    res = totalPoint / res;
-    return res.toFixed(2);
+    console.log("first:"+res);
+    (res===0)?(res=0):(res = totalPoint / res,res=res.toFixed(2))
+    return res;
   },
   /**
    * [editIcon]
