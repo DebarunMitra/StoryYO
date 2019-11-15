@@ -1,6 +1,12 @@
 const moment=require('moment');
 
 module.exports = {
+  /**
+   * [truncate description]
+   * @param  {[string]} str [article string]
+   * @param  {[number]} len [length of the article]
+   * @return {[string]}     [send some part of article]
+   */
   truncate: function(str, len){
     if (str.length > len && str.length > 0) {
 			let new_str = str + " ";
@@ -11,27 +17,65 @@ module.exports = {
 		}
 		return str;
   },
+  /**
+   * [stripTags]
+   * @param  {[string]} input [article string]
+   * @return {[string]}       [remove html tag from article]
+   */
   stripTags: function(input){
     return input.replace(/<(?:.|\n)*?>/gm, '');
   },
+  /**
+   * [formatDate]
+   * @param  {[date]} date   [date of the article]
+   * @param  {[date format]} format [format of the date]
+   * @return {[date wiht format]}        [date format to display into the title]
+   */
   formatDate: function(date, format){
       return moment(date).format(format);
   },
+  /**
+   * [select(used in edit page)]
+   * @param  {[string]} selected [takes the article status(public/private) etc]
+   * @param  {[string]} options  [checks the option selected]
+   * @return {[string]}          [return selected option]
+   */
   select: function(selected, options){
     return options.fn(this).replace( new RegExp(' value=\"' + selected + '\"'), '$& selected="selected"').replace( new RegExp('>' + selected + '</option>'), ' selected="selected"$&');
   },
+  /**
+   * [senNo]
+   * @param  {[string]} sen [takes an data sring with sentence no, word no, paragraph no and point]
+   * @return {[type]}     [number of sentence]
+   */
   senNo:function(sen){
     let sc=sen.split(':');
     return sc[0];
   },
+  /**
+   * [description]
+   * @param  {[type]} word [takes an data sring with sentence no, word no, paragraph no and point]
+   * @return {[type]}      [number of words]
+   */
   wordNo:function(word){
     let wc=word.split(':');
     return wc[1];
   },
+  /**
+   * [paragraphNo]
+   * @param  {[type]} para [takes an data sring with sentence no, word no, paragraph no and point]
+   * @return {[type]}      [number of paragraphs]
+   */
   paragraphNo:function(para){
     let pc=para.split(':');
     return pc[2];
   },
+  /**
+   * [description]
+   * @param  {[type]} value   [description]
+   * @param  {[type]} options [description]
+   * @return {[type]}         [description]
+   */
   eachProperty: function(value,options) {
     let context=JSON.parse(value);
     var ret = "";
