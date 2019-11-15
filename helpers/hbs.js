@@ -54,7 +54,7 @@ module.exports = {
   },
   /**
    * [description]
-   * @param  {[type]} word [takes an data sring with sentence no, word no, paragraph no and point]
+   * @param  {[type]} word [takes an data sring with sentence no, word no, paragraph no]
    * @return {[type]}      [number of words]
    */
   wordNo:function(word){
@@ -63,7 +63,7 @@ module.exports = {
   },
   /**
    * [paragraphNo]
-   * @param  {[type]} para [takes an data sring with sentence no, word no, paragraph no and point]
+   * @param  {[type]} para [takes an data sring with sentence no, word no, paragraph no]
    * @return {[type]}      [number of paragraphs]
    */
   paragraphNo:function(para){
@@ -87,6 +87,11 @@ module.exports = {
     }
     return ret;
   },
+  /**
+   * [readingTime]
+   * @param  {[]} data [description]
+   * @return {[type]}      [description]
+   */
   readingTime:function(data){
     let words=data.split(':');
     let time=(words[1]/200)*60;
@@ -101,9 +106,18 @@ module.exports = {
     let point=data.split(':');
     return point[3];
   },
+  /**
+   * [description]
+   * @return {[string]} [image file path]
+   */
 bgimage:function(){
   return 'css/content.png';
   },
+  /**
+   * [rank]
+   * @param  {[array object]} stories [all stories of user]
+   * @return {[number]}         [count all the points of article]
+   */
 rank:function(stories){
   let totalPoint=0,res=0;
   stories.forEach((value,key)=>{
@@ -112,6 +126,14 @@ rank:function(stories){
   res=totalPoint/res;
   return res.toFixed(2);
 },
+/**
+ * [editIcon]
+ * @param  {[string]}  storyUser       [story user id]
+ * @param  {[string]}  loggedUser      [logged user id]
+ * @param  {[string]}  storyId         [story id]
+ * @param  {Boolean} [floating=true] [icon status]
+ * @return {[html tag]}              [show edit icon only for user story]
+ */
 editIcon: function(storyUser, loggedUser, storyId, floating = true){
     if(storyUser == loggedUser){
       if(floating){
