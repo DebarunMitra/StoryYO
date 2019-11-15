@@ -11,7 +11,12 @@ const Article = require('../analyser/analysis');
 
 let promise;
 
-// Stories Index
+/**
+ * [default route description]
+ * @path '/', default route description
+ * @method  GET
+ * @res stories/index
+ */
 router.get('/', (req, res) => {
   Story.find({
     status: 'public'
@@ -22,7 +27,14 @@ router.get('/', (req, res) => {
   });
 });
 
-// Show Single Story
+
+  /**
+ * [Show Single Story]
+ * @path '/show/:id'
+ * @params story id
+ * @method  GET
+ * @res 'stories/show'
+ */
 router.get('/show/:id', (req, res) => {
   Story.findOne({
     _id: req.params.id
@@ -50,7 +62,13 @@ router.get('/show/:id', (req, res) => {
   });
 });
 
-// List stories from a user
+/**
+* [List stories from a user]
+* @path '/user/:userId'
+* @params user id
+* @method  GET
+* @res stories/index
+*/
 router.get('/user/:userId', (req, res) => {
   Story.find({user: req.params.userId, status: 'public'})
     .populate('user')
@@ -61,7 +79,12 @@ router.get('/user/:userId', (req, res) => {
     });
 });
 
-// Logged in users stories
+/**
+* [Logged in users stories]
+* @path '/my', user own story
+* @method  GET
+* @res stories/index
+*/
 router.get('/my', ensureAuthenticated, (req, res) => {
   Story.find({user: req.user.id})
     .populate('user')
