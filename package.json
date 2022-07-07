@@ -21,7 +21,7 @@
     "gramma": "^1.0.1",
     "grammarbot": "^1.0.2",
     "method-override": "^3.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.7.6",
     "node-gyp": "^6.0.0",
     "nodemon": "^1.19.4",
