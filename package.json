@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "custom-grammar-bot-api": "^1.0.3",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
     "gramma": "^1.0.1",
